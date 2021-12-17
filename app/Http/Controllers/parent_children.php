@@ -98,19 +98,21 @@ class parent_children extends Controller
    }
    public function edit_p($id)
    {
-
-   $data=bd_parent::find($id);
-       return view('edit_p', ['data'=> $data]);
+//    dd($id);
+     $data1=bd_parent::find($id);
+     $data2=bd_children::all();
+       return view('edit_p', ['data1'=> $data1, 'data2'=> $data2]);
 
    }
     public function update_p(Request $request, $id)
     {
-        $children=bd_children::find($id);
-        $update=new bd_parent();
+        // $children=bd_children::find($id);
+        // $update=new bd_parent();
+        $update=bd_parent::find($id);
         $update->children_id=request('children_id');
         $update->mother_name=request('mother_name');
         $update->father_name=request('father_name');
-        $children->parent()->save($update);
+        $update->save();
         return '<script>alert("success store parent");</script>';
     }
 }

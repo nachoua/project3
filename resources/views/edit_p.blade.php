@@ -12,16 +12,24 @@
     <h1>form parent</h1>
 
 
-          <form class="row g-3 small" action={{route('update_p', ['id'=>$data->id])}} method="POST">
+          <form class="row g-3 small" action={{route('update_p', ['id'=> $data1->id])}} method="POST">
 
 
     <input type="hidden" name="_method" value="PUT">
 
         @csrf
+        {{-- @php
+        dd(gettype($data->children_id))
+        @endphp --}}
         <select class="form-select" name="children_id">
-            @foreach ($data as $b)
-                <option class="" name={{$b->children->children_id}}>{{$b->id}}</option>
-                @endforeach
+
+
+                <option class="" name="children_id" value={{$data1->children_id}}>
+                    {{-- @foreach ($data2 as $dd) --}}
+                    {{$data1->children_id}}
+              </option>
+                {{--   @endforeach --}}
+
 
        </select>
 
